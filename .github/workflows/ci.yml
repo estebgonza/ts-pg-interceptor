@@ -1,0 +1,45 @@
+name: Test and Run Docker Compose
+
+on: [push, pull_request]
+
+env:
+  DOCKER_COMPOSE_VERSION: 1.26.2
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: |
+          yarn install
+
+      - name: Start Docker Compose
+        uses: docker/compose-action@v1.0.0
+        with:
+          context: .
+          compose-file: docker-compose.yml
+          project-name: tcp-proxy-test
+          service: test-app
+          command: up
+
+      - name: Run Tests
+        run: |
+          yarn test
+
+      - name: Stop Docker Compose
+        uses: docker/compose-action@v1.0.0
+        with:
+          context: .
+          compose-file: docker-compose.yml
+          project-name: tcp-proxy-test
+          service: test-app
+          command: down

@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/node18-strictest-esm/tsconfig.json",
+  "type": "module",
+  "compilerOptions": {
+    "esModuleInterop": true
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*"]
+}
