@@ -22,24 +22,30 @@ jobs:
         run: |
           yarn install
 
+      - uses: actions/checkout@v3
       - name: Start Docker Compose
-        uses: docker/compose-action@v1.0.0
+        uses: isbang/compose-action@v1.4.1
         with:
           context: .
           compose-file: docker-compose.yml
-          project-name: tcp-proxy-test
-          service: test-app
+          services: |
+            db
+            adminer
+            redis
           command: up
 
       - name: Run Tests
         run: |
           yarn test
 
+      - uses: actions/checkout@v3
       - name: Stop Docker Compose
-        uses: docker/compose-action@v1.0.0
+        uses: isbang/compose-action@v1.4.1
         with:
           context: .
           compose-file: docker-compose.yml
-          project-name: tcp-proxy-test
-          service: test-app
+          services: |
+            db
+            adminer
+            redis
           command: down
