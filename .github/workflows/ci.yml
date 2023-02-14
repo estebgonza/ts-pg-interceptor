@@ -33,7 +33,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          yarn test
+          yarn jest --updateSnapshot
 
       - uses: actions/checkout@v3
       - name: Stop Docker Compose
