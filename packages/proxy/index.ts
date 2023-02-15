@@ -26,11 +26,11 @@ export interface TcpProxyEvents {
   /**
    * Emitted when data is received from a client
    */
-  "client-data": (data: Buffer) => void;
+  "client-data": (data: Buffer, socket: net.Socket) => void;
   /**
    * Emitted when data is received from the target server
    */
-  "target-data": (data: Buffer) => void;
+  "target-data": (data: Buffer, socket: net.Socket) => void;
   /**
    * Emitted when the proxy server has started listening for incoming connections
    */
@@ -63,12 +63,12 @@ export class TcpProxy extends EventEmitter {
       });
 
       socket.on("data", (data) => {
-        this.emit("client-data", data);
+        this.emit("client-data", data, socket);
         proxySocket.write(data);
       });
 
       proxySocket.on("data", (data) => {
-        this.emit("target-data", data);
+        this.emit("target-data", data, proxySocket);
         socket.write(data);
       });
     });

@@ -18,16 +18,15 @@ describe("PostgresRequestInterceptor", () => {
   });
 
   it("should emit on-request event", (done) => {
-    interceptor.on("request", (requestData) => {
+    interceptor.on("request", (requestData, socket) => {
       expect(requestData).toEqual("SELECT 1");
+      expect(socket).toBeInstanceOf(net.Socket);
       done();
     });
 
     interceptor.start();
 
     const client = new net.Socket();
-    client.connect(5433, "localhost", () => {
-      client.write("QSELECT 1");
-    });
+    client.connect(5433, "localhost", () => client.write("QSELECT 1"));
   });
 });
