@@ -124,4 +124,28 @@ export class TcpProxy extends EventEmitter {
   stop() {
     this.server.close(() => this.emit("closed"));
   }
+
+  /**
+   * Sets the hooks for the TcpProxy instance.
+   * @param hooks - The hooks to set.
+   * @returns The TcpProxy instance.
+   * @example
+   * const proxy = new TcpProxy({ targetHost: "localhost", targetPort: 8080, listenPort: 8081 });
+   * proxy.setHooks({
+   *  clientData: (data) => {
+   *   return data.toString().replace("foo", "bar");
+   * }
+   * });
+   */
+  setHooks(hooks: TcpProxyHooks) {
+    this.hooks = hooks;
+  }
+
+  getHooks() {
+    return this.hooks;
+  }
+
+  getListenPort() {
+    return this.options.listenPort;
+  }
 }
