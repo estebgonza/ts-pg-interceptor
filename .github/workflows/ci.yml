@@ -31,6 +31,7 @@ jobs:
             redis
           command: up
 
+      # Error: jest not found
       # - name: Run Tests
       #   run: |
       #     yarn run test
