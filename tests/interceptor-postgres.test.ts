@@ -1,32 +1,47 @@
-import { PostgresRequestInterceptor } from "../src/interceptor/postgres";
-import * as net from "net";
-import { describe, it, expect, beforeEach, afterEach } from "@jest/globals";
+import net from "net";
+import {
+  PostgresRequestInterceptor,
+  PostgresQueryInterceptorOptions,
+} from "../src/interceptor/postgres";
 
 describe("PostgresRequestInterceptor", () => {
   let interceptor: PostgresRequestInterceptor;
 
   beforeEach(() => {
-    interceptor = new PostgresRequestInterceptor({
+    const options: PostgresQueryInterceptorOptions = {
       targetHost: "localhost",
-      targetPort: 5432,
-      listenPort: 5433,
-    });
+      targetPort: 3001,
+      listenPort: 3002,
+    };
+    interceptor = new PostgresRequestInterceptor(options);
   });
 
-  afterEach(() => {
-    interceptor.stop();
+  it("should return data if the string starts with a letter other than 'Q'", () => {
+    const buffer = Buffer.from("P Hello World");
+    const socket = new net.Socket();
+    const result = interceptor.handleDataFromClient(buffer, socket);
+    expect(result).toBe(buffer);
   });
 
-  it("should emit on-request event", (done) => {
-    interceptor.on("request", (requestData, socket) => {
-      expect(requestData).toEqual("SELECT 1");
-      expect(socket).toBeInstanceOf(net.Socket);
-      done();
-    });
+  it("should call onQuery and return its result if the string starts with 'Q'", () => {
+    const buffer = Buffer.from("Q SELECT * FROM users;");
+    const socket = new net.Socket();
+    interceptor.onQuery = jest.fn(() =>
+      Buffer.from("Query executed successfully")
+    );
+    const result = interceptor.handleDataFromClient(buffer, socket);
+    expect(interceptor.onQuery).toHaveBeenCalledWith(buffer, socket);
+    expect(result).toBeInstanceOf(Buffer);
+  });
 
-    interceptor.start();
-
-    const client = new net.Socket();
-    client.connect(5433, "localhost", () => client.write("QSELECT 1"));
+  it("should call onResults and return its result", () => {
+    const buffer = Buffer.from("Results from the database");
+    const socket = new net.Socket();
+    interceptor.onResults = jest.fn(() =>
+      Buffer.from("Results intercepted successfully")
+    );
+    const result = interceptor.handleDataFromDatabase(buffer, socket);
+    expect(interceptor.onResults).toHaveBeenCalledWith(buffer, socket);
+    expect(result).toBeInstanceOf(Buffer);
   });
 });

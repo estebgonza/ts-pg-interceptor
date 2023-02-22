@@ -141,10 +141,18 @@ export class TcpProxy extends EventEmitter {
     this.hooks = hooks;
   }
 
+  /**
+   * Gets the hooks for the TcpProxy instance.
+   * @returns The hooks for the TcpProxy instance.
+   */
   getHooks() {
     return this.hooks;
   }
 
+  /**
+   * Gets the options for the TcpProxy instance.
+   * @returns The options for the TcpProxy instance.
+   */
   getListenPort() {
     return this.options.listenPort;
   }
