@@ -1,5 +1,5 @@
 import { RequestInterceptor } from "..";
-import { TcpProxy, TcpProxyOptions } from "./../../proxy";
+import { TcpProxy, TcpProxyOptions } from "../../proxy/proxy";
 
 /**
  * The options for a PostgresRequestInterceptor instance

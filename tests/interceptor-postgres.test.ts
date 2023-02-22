@@ -1,4 +1,4 @@
-import { PostgresRequestInterceptor } from ".";
+import { PostgresRequestInterceptor } from "../src/interceptor/postgres";
 import * as net from "net";
 import { describe, it, expect, beforeEach, afterEach } from "@jest/globals";
 
