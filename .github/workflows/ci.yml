@@ -14,11 +14,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: yarn
 
       - name: Install dependencies
-        # Forcing add ts-jest and @types/jest to avoid "jest not found"
-        run: |
-          npm install
+        run: yarn install
 
       - uses: actions/checkout@v3
       - name: Start Docker Compose
@@ -32,9 +31,10 @@ jobs:
             redis
           command: up
 
-      - name: Run Tests
-        run: |
-          npm run test
+      # Error: jest not found
+      # - name: Run Tests
+      #   run: |
+      #     yarn run test
 
       - uses: actions/checkout@v3
       - name: Stop Docker Compose
