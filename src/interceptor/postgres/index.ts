@@ -1,5 +1,5 @@
-import { QueryInterceptor, QueryInterceptorOptions } from "..";
-import { TcpProxy, TcpProxyOptions } from "../../proxy/proxy";
+import { QueryInterceptor, QueryInterceptorOptions } from "../index.js";
+import { TcpProxy, TcpProxyOptions } from "../../proxy/proxy.js";
 import type net from "net";
 
 /**
