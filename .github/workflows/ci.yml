@@ -17,7 +17,11 @@ jobs:
           cache: yarn
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          yarn cache clean
+          yarn cache clean --mirror
+          yarn add jest
+          yarn install
 
       - uses: actions/checkout@v3
       - name: Start Docker Compose
