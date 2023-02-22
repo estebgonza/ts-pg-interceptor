@@ -1,9 +1,9 @@
 {
   "name": "ts-pg-interceptor",
   "description": "A simple typescript interceptor for postgresql queries",
-  "version": "1.0.1",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "1.0.2",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "license": "MIT",
   "type": "module",
   "author": {
