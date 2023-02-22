@@ -109,6 +109,7 @@ export class TcpProxy extends EventEmitter {
       proxySocket.on("error", (err) => this.emit("error", err));
       socket.on("error", (err) => this.emit("error", err));
     });
+    this.server.on("error", (err) => console.error(err));
   }
 
   /**
