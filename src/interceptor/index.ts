@@ -1,4 +1,4 @@
-import { TcpProxy, TcpProxyOptions } from "../proxy";
+import { TcpProxy, TcpProxyOptions } from "../proxy/proxy";
 import { EventEmitter } from "events";
 
 /**

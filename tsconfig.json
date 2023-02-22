@@ -10,5 +10,5 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
-  "include": ["src/**/*", "packages/**/*"]
+  "include": ["src/**/*", "src/**/*", "tests/**/*"]
 }

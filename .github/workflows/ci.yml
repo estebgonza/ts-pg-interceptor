@@ -31,9 +31,9 @@ jobs:
             redis
           command: up
 
-      # - name: Run Tests
-      #   run: |
-      #     yarn run test
+      - name: Run Tests
+        run: |
+          yarn run test
 
       - uses: actions/checkout@v3
       - name: Stop Docker Compose
