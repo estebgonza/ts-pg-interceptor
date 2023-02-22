@@ -17,9 +17,9 @@ jobs:
           cache: yarn
 
       - name: Install dependencies
+        # Forcing add ts-jest and @types/jest to avoid "jest not found"
         run: |
-          yarn cache clean
-          yarn cache clean --mirror
+          yarn add --dev jest ts-jest @types/jest
           yarn install
 
       - uses: actions/checkout@v3
