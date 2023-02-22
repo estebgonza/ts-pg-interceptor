@@ -14,36 +14,36 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: yarn
+          # cache: yarn
 
       - name: Install dependencies
         run: yarn install
 
-      - uses: actions/checkout@v3
-      - name: Start Docker Compose
-        uses: isbang/compose-action@v1.4.1
-        with:
-          context: .
-          compose-file: docker-compose.yml
-          services: |
-            db
-            adminer
-            redis
-          command: up
+      # - uses: actions/checkout@v3
+      # - name: Start Docker Compose
+      #   uses: isbang/compose-action@v1.4.1
+      #   with:
+      #     context: .
+      #     compose-file: docker-compose.yml
+      #     services: |
+      #       db
+      #       adminer
+      #       redis
+      #     command: up
 
       # Error: jest not found
-      # - name: Run Tests
-      #   run: |
-      #     yarn run test
+      - name: Run Tests
+        run: |
+          yarn run test
 
-      - uses: actions/checkout@v3
-      - name: Stop Docker Compose
-        uses: isbang/compose-action@v1.4.1
-        with:
-          context: .
-          compose-file: docker-compose.yml
-          services: |
-            db
-            adminer
-            redis
-          command: down
+      # - uses: actions/checkout@v3
+      # - name: Stop Docker Compose
+      #   uses: isbang/compose-action@v1.4.1
+      #   with:
+      #     context: .
+      #     compose-file: docker-compose.yml
+      #     services: |
+      #       db
+      #       adminer
+      #       redis
+      #     command: down
