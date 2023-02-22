@@ -2,7 +2,7 @@ import net from "net";
 import {
   PostgresQueryInterceptor,
   PostgresQueryInterceptorOptions,
-} from "../src/interceptor/postgres";
+} from "../src/interceptor/postgres/index.js";
 
 describe("PostgresQueryInterceptor", () => {
   let interceptor: PostgresQueryInterceptor;

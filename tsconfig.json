@@ -1,11 +1,12 @@
 {
-  "extends": "@tsconfig/node18-strictest-esm/tsconfig.json",
   "type": "module",
   "compilerOptions": {
     "esModuleInterop": true,
     "target": "es2015",
     "declaration": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "module": "node16",
+    "lib": ["dom", "es2015"]
   },
   "ts-node": {
     "esm": true,
