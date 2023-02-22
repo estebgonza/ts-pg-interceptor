@@ -1,11 +1,11 @@
 import net from "net";
 import {
-  PostgresRequestInterceptor,
+  PostgresQueryInterceptor,
   PostgresQueryInterceptorOptions,
 } from "../src/interceptor/postgres";
 
-describe("PostgresRequestInterceptor", () => {
-  let interceptor: PostgresRequestInterceptor;
+describe("PostgresQueryInterceptor", () => {
+  let interceptor: PostgresQueryInterceptor;
 
   beforeEach(() => {
     const options: PostgresQueryInterceptorOptions = {
@@ -13,7 +13,7 @@ describe("PostgresRequestInterceptor", () => {
       targetPort: 3001,
       listenPort: 3002,
     };
-    interceptor = new PostgresRequestInterceptor(options);
+    interceptor = new PostgresQueryInterceptor(options);
   });
 
   describe("interceptor read-only", () => {
