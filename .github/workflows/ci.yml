@@ -20,7 +20,6 @@ jobs:
         run: |
           yarn cache clean
           yarn cache clean --mirror
-          yarn add jest
           yarn install
 
       - uses: actions/checkout@v3
