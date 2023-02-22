@@ -2202,13 +2202,6 @@ ts-jest@^29.0.5:
     semver "7.x"
     yargs-parser "^21.0.1"
 
-ts-pg-interceptor@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/ts-pg-interceptor/-/ts-pg-interceptor-1.0.3.tgz#5f74d59a533e0e5b376e40e8eb12bef42e82abb5"
-  integrity sha512-HoobPEJSvb2V8+lhTkBpBuhAKjPzgVVDYU0SmCTKEYZyYVCWXbe2w5F49EX9e68m153jsFlleDhiMZJ9K4ICMQ==
-  dependencies:
-    typescript "^4.9.5"
-
 type-detect@4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.0.8.tgz#7646fb5f18871cfbb7749e69bd39a6388eb7450c"
