@@ -1,4 +1,4 @@
-import { TcpProxy, TcpProxyOptions } from "../proxy/proxy";
+import { TcpProxy, TcpProxyOptions } from "../proxy/proxy.js";
 import { EventEmitter } from "events";
 import type net from "net";
 
