@@ -1,6 +1,6 @@
 # TCP Proxy with PostgreSQL Request Interceptor
 
-![alt text](https://github.com/estebgonza/pg-redis-cache/actions/workflows/ci.yml/badge.svg)
+![alt text](https://github.com/estebgonza/ts-pg-interceptor/actions/workflows/ci.yml/badge.svg)
 
 A TCP proxy server with the ability to intercept and manipulate PostgreSQL requests. This package provides an event-driven approach to data handling, making it easy to listen for and modify incoming requests.
 
@@ -12,8 +12,7 @@ A TCP proxy server with the ability to intercept and manipulate PostgreSQL reque
 // Create a new PostgresQueryInterceptor instance with the desired options
 const interceptor = new PostgresQueryInterceptor({
   // Interceptor server options
-  host: 'localhost',
-  port: 6432,
+  listenPort: 6432,
   // Target Postgres connection options
   targetHost: 'localhost',
   targetPort: 5432

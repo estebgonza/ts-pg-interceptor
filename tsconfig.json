@@ -2,7 +2,10 @@
   "extends": "@tsconfig/node18-strictest-esm/tsconfig.json",
   "type": "module",
   "compilerOptions": {
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "target": "es2015",
+    "declaration": true,
+    "outDir": "./dist"
   },
   "ts-node": {
     "esm": true,

@@ -2,8 +2,7 @@ import { PostgresQueryInterceptor } from "ts-pg-interceptor";
 
 const interceptor = new PostgresQueryInterceptor({
   // Interceptor server options
-  host: "localhost",
-  port: 6432,
+  listenPort: 6432,
   // Target Postgres connection options
   targetHost: "localhost",
   targetPort: 5432,
