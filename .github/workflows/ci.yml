@@ -1,4 +1,4 @@
-name: Unit Tests CI
+name: Tests
 
 on: [push, pull_request]
 
