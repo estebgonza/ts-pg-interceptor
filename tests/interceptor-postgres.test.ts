@@ -1,4 +1,4 @@
-import net from "net";
+import * as net from "net";
 import {
   PostgresQueryInterceptor,
   PostgresQueryInterceptorOptions,
@@ -27,9 +27,9 @@ describe("PostgresQueryInterceptor", () => {
     it("should call onQuery and return its result if the string starts with 'Q'", () => {
       const buffer = Buffer.from("Q SELECT * FROM users;");
       const socket = new net.Socket();
-      interceptor.onQuery = jest.fn(() =>
-        Buffer.from("Query executed successfully")
-      );
+      interceptor.onQuery = vi
+        .fn()
+        .mockReturnValue(Buffer.from("Query intercepted successfully"));
       const result = interceptor.handleDataFromClient(buffer, socket);
       expect(interceptor.onQuery).toHaveBeenCalledWith(buffer, socket);
       expect(result).toBeInstanceOf(Buffer);
@@ -38,9 +38,9 @@ describe("PostgresQueryInterceptor", () => {
     it("should call onResults and return its result", () => {
       const buffer = Buffer.from("Results from the database");
       const socket = new net.Socket();
-      interceptor.onResults = jest.fn(() =>
-        Buffer.from("Results intercepted successfully")
-      );
+      interceptor.onResults = vi
+        .fn()
+        .mockReturnValue(Buffer.from("Results intercepted successfully"));
       const result = interceptor.handleDataFromDatabase(buffer, socket);
       expect(interceptor.onResults).toHaveBeenCalledWith(buffer, socket);
       expect(result).toBeInstanceOf(Buffer);
