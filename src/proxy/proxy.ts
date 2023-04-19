@@ -1,4 +1,4 @@
-import net from "net";
+import * as net from "net";
 import { EventEmitter } from "events";
 
 /**
@@ -90,20 +90,15 @@ export class TcpProxy extends EventEmitter {
         this.emit("target-connected");
       });
 
+      socket.pipe(proxySocket);
+      proxySocket.pipe(socket);
+
       socket.on("data", async (data) => {
-        if (this.hooks.clientData) {
-          data = await this.hooks.clientData(data, socket);
-        }
         this.emit("client-data", data, socket);
-        proxySocket.write(data);
       });
 
       proxySocket.on("data", async (data) => {
-        if (this.hooks.targetData) {
-          data = await this.hooks.targetData(data, proxySocket);
-        }
         this.emit("target-data", data, proxySocket);
-        socket.write(data);
       });
 
       proxySocket.on("error", (err) => this.emit("error", err));

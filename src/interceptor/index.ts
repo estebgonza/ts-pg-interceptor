@@ -1,6 +1,6 @@
 import { TcpProxy, TcpProxyOptions } from "../proxy/proxy.js";
 import { EventEmitter } from "events";
-import type net from "net";
+import * as net from "net";
 
 /**
  * Options for configuring a QueryInterceptor instance.

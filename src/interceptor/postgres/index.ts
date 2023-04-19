@@ -1,6 +1,6 @@
 import { QueryInterceptor, QueryInterceptorOptions } from "../index.js";
 import { TcpProxy, TcpProxyOptions } from "../../proxy/proxy.js";
-import type net from "net";
+import * as net from "net";
 
 /**
  * The options for a PostgresQueryInterceptor instance.
