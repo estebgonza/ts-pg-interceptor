@@ -1,6 +1,6 @@
 # TCP Proxy with PostgreSQL Request Interceptor
 
-![alt text](https://github.com/estebgonza/ts-pg-interceptor/actions/workflows/ci.yml/badge.svg)
+![alt text](https://img.shields.io/github/actions/workflow/status/estebgonza/ts-pg-interceptor/tests.yml?branch=main&label=Build)
 
 A TCP proxy server with the ability to intercept and manipulate PostgreSQL requests. This package provides an event-driven approach to data handling, making it easy to listen for and modify incoming requests.
 
