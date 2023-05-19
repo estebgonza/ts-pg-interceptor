@@ -1,4 +1,4 @@
-# TCP Proxy with PostgreSQL Request Interceptor
+# PostgreSQL Request Interceptor
 
 ![alt text](https://img.shields.io/github/actions/workflow/status/estebgonza/ts-pg-interceptor/tests.yml?branch=main&label=Build)
 
